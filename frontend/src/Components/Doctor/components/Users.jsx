@@ -121,8 +121,8 @@ export default function Users() {
       headerName: 'User Name',
       width: 150,
       renderCell: (params) => {
-        const userName = params.row.user.username;
-        return userName;
+        // const userName = params.row.user.username;
+        return "Priyanshu Kumar";
       },
     },
     { field: 'disease', headerName: 'Disease', width: 100 },

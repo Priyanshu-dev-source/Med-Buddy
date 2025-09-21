@@ -42,7 +42,7 @@ const ContactUsPage = () => {
   return (
     <Box py={4} sx={{ backgroundColor: '#ced3db' }}>
       <Container maxWidth="md">
-        <Typography variant="h4" align="center" gutterBottom>
+        <Typography variant="h4" align="center" gutterBottom color="common.black">
           Contact Us
         </Typography>
 
@@ -50,39 +50,39 @@ const ContactUsPage = () => {
           <Grid item xs={12} sm={6}>
             <Box display="flex" alignItems="center">
               <Email sx={{ mr: 1 }} />
-              <Typography variant="body1">
-                Email: bastolaronak12@gmail.com
+              <Typography variant="body1" color="common.black">
+                Email: medbuddypsit@gmail.com
               </Typography>
             </Box>
           </Grid>
           <Grid item xs={12} sm={6}>
             <Box display="flex" alignItems="center">
               <Phone sx={{ mr: 1 }} />
-              <Typography variant="body1">
-                Phone: +977-9862164447
+              <Typography variant="body1" color="common.black">
+                Phone: +91 6386835013 
               </Typography>
             </Box>
           </Grid>
         </Grid>
 
         <Box mt={4}>
-          <Typography variant="h6" gutterBottom>
+          <Typography variant="h6" gutterBottom color="common.black">
             Address
           </Typography>
           <Grid container spacing={2} alignItems="center">
             <Grid item xs={12} sm={6}>
               <Box display="flex" alignItems="center">
                 <LocationOn sx={{ mr: 1 }} />
-                <Typography variant="body1">
-                  Kathmandu
+                <Typography variant="body1" color="common.black">
+                  PSIT, Kanpur
                 </Typography>
               </Box>
             </Grid>
             <Grid item xs={12} sm={6}>
               <Box display="flex" alignItems="center">
                 <LocationOn sx={{ mr: 1 }} />
-                <Typography variant="body1">
-                Baneshwor
+                <Typography variant="body1" color="common.black">
+                Kanpur
                 </Typography>
               </Box>
             </Grid>
@@ -94,13 +94,13 @@ const ContactUsPage = () => {
             Map
           </Typography>
           <Box height={400} mt={2}>
-            {/* <iframe width="100%" height="600" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?width=100%25&amp;height=600&amp;hl=en&amp;q=Baneshwor+(Bharosha%20Hospital)&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"><a href="https://www.maps.ie/population/">Population mapping</a></iframe> */}
-            <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d2263.1707428429418!2d85.3351713!3d27.6939869!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39eb1999d574786b%3A0x727aa56d32352da2!2z4KSt4KSw4KWL4KS44KS-IOCkheCkuOCljeCkquCkpOCkvuCksiDgpKrgpY3gpLDgpL4u4KSy4KS_!5e1!3m2!1sne!2snp!4v1694709428278!5m2!1sne!2snp" width="850" height="400"  loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            <iframe width="100%" height="400" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?width=100%25&amp;height=600&amp;hl=en&amp;q=Pranveer%20Singh%20Institute%20of%20Technology,+PSIT+Kanpur&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"><a href="https://www.maps.ie/population/">Population mapping</a></iframe>
+            {/* <iframe src="https://www.google.com/maps/place/Pranveer+Singh+Institute+of+Technology,+PSIT+Kanpur/@26.4495405,80.1162882,13z/data=!4m10!1m2!2m1!1spsit+kanpur!3m6!1s0x399c49fa39cfefaf:0x1716805077816869!8m2!3d26.4495405!4d80.1925059!15sCgtwc2l0IGthbnB1cloNIgtwc2l0IGthbnB1cpIBB2NvbGxlZ2XgAQA!16s%2Fm%2F0660qdr?entry=ttu&g_ep=EgoyMDI1MDEwMi4wIKXMDSoASAFQAw%3D%3D" width="850" height="400"  loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe> */}
           </Box>
         </Box>
 
         <Box mt={4}>
-          <Typography variant="h6" gutterBottom>
+          <Typography variant="h6" gutterBottom color="common.black">
             Contact Form
           </Typography>
           <form onSubmit={handleSubmit}>

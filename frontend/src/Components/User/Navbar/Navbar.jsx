@@ -55,6 +55,7 @@ const Navbar = () => {
     <>
       <AppBar sx={{ background: "#f3f7eb", position: "sticky" ,top:"0px" }}>
         <Toolbar sx={{ justifyContent: "space-between" ,border:"none" }}>
+          <h4 style={{color: "black"}}>Med <br/>Buddy</h4>
           <IconButton
             size="large"
             aria-label="account of current user"

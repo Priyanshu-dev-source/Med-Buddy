@@ -12,13 +12,12 @@ import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
 import KhaltiCheckout from "khalti-checkout-web";
 import moment from "moment";
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 
 import toast from "react-hot-toast";
 
 import { Box } from "@mui/system";
 import { Grid, Typography } from "@mui/material";
-
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
@@ -41,9 +40,9 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 }));
 
 export default function Cart() {
-  const navigate=useNavigate()
+  // const navigate = useNavigate();
   const [id, setId] = React.useState(null);
-  const [report,setReport]=React.useState(false)
+  const [report, setReport] = React.useState(false);
 
   const [selectedInvoice, setSelectedInvoice] = React.useState(null);
 
@@ -66,8 +65,9 @@ export default function Cart() {
       );
 
       console.log(response.data);
+      console.log(report);
       toast.success("payment successfull!!!");
-      setReport(true)
+      setReport(true);
       setId(null);
     } catch (error) {
       console.log(error.message);
@@ -101,7 +101,7 @@ export default function Cart() {
   };
   let checkout = new KhaltiCheckout(Config);
   const appointment = useSelector((state) => state.patient);
-  console.log(appointment.list.user_appointments);
+  console.log(appointment.list.user_appointments)
 
   React.useEffect(() => {
     dispatch(getpatient());
@@ -111,47 +111,68 @@ export default function Cart() {
     if (id && selectedInvoice) {
       checkout.show({ amount: selectedInvoice * 100 });
     }
-  }, [id, selectedInvoice]);
+  }, [id, selectedInvoice, checkout]);
 
   return (
     <>
-
-    <Grid container sx={{display:"flex" ,flexDirection:'column'}}>
-      <Grid item sx={{
-        marginTop:"20px",
-        marginBottom:"20px"
-      }}>
-      <Typography variant="h4" align="center" gutterBottom>
+      {/* <div>
+            {new_medicine && new_medicine.length > 0 ? (
+                new_medicine.map((medicine, index) => (
+                    <div key={index} className="medicine-item">
+                        <p><strong>Medicine:</strong> {medicine}</p>
+                        <p><strong>About:</strong> {medicine}</p>
+                    </div>
+                ))
+            ) : (
+                <p>No medicines available.</p>
+            )}
+        </div> */}
+      <Grid container sx={{ display: "flex", flexDirection: "column" }}>
+        <Grid
+          item
+          sx={{
+            marginTop: "20px",
+            marginBottom: "20px",
+          }}
+        >
+          <Typography variant="h4" align="center" gutterBottom>
             User DashBoard
           </Typography>
-      </Grid >
-      <Grid item>
-      <TableContainer component={Paper}>
-        <Table sx={{ minWidth: 600 }} aria-label="customized table">
-          <TableHead>
-            <TableRow>
-              <StyledTableCell>Doctors Name</StyledTableCell>
+        </Grid>
+        <Grid item>
+          <TableContainer component={Paper}>
+            <Table sx={{ minWidth: 600 }} aria-label="customized table">
+              <TableHead>
+                <TableRow>
+                  <StyledTableCell>Doctors Name</StyledTableCell>
 
-              <StyledTableCell align="left">Disease</StyledTableCell>
-              <StyledTableCell align="left">Date</StyledTableCell>
-              {/* <StyledTableCell align="left">Status</StyledTableCell> */}
-              <StyledTableCell align="left">Invoice</StyledTableCell>
-              <StyledTableCell align="left">Pay Now</StyledTableCell>
-              <StyledTableCell align="left">Report</StyledTableCell>
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            {appointment?.list?.user_appointments?.map((item) => (
-              <StyledTableRow key={item._id}>
-                <StyledTableCell align="left">
-                  {item?.doctor?.name}
-                </StyledTableCell>
-                <StyledTableCell align="left">{item?.disease}</StyledTableCell>
-                <StyledTableCell align="left">{moment.utc(item?.date).format('MM/DD/YYYY')}</StyledTableCell>
-                {/* <StyledTableCell align="left">{item?.status}</StyledTableCell> */}
-                <StyledTableCell align="left">{item?.doctor?.ammount}</StyledTableCell>
-                <StyledTableCell align="left">
-                
+                  <StyledTableCell align="left">Disease</StyledTableCell>
+                  <StyledTableCell align="left">Date</StyledTableCell>
+                  {/* <StyledTableCell align="left">Status</StyledTableCell> */}
+                  <StyledTableCell align="left">Invoice</StyledTableCell>
+                  <StyledTableCell align="left">Pay Now</StyledTableCell>
+                  <StyledTableCell align="left">Report</StyledTableCell>
+                  <StyledTableCell align="left">Prescription</StyledTableCell>
+                </TableRow>
+              </TableHead>
+              <TableBody>
+                {appointment?.list?.user_appointments?.map((item) => (
+                  <StyledTableRow key={item._id}>
+                    <StyledTableCell align="left">
+                      {item?.doctor?.name}
+                    </StyledTableCell>
+                    <StyledTableCell align="left">
+                      {item?.disease}
+                    </StyledTableCell>
+                    <StyledTableCell align="left">
+                      {moment.utc(item?.date).format("MM/DD/YYYY")}
+                    </StyledTableCell>
+                    {/* <StyledTableCell align="left">{item?.status}</StyledTableCell> */}
+                    <StyledTableCell align="left">
+                      {item?.doctor?.ammount}
+                    </StyledTableCell>
+                    {/* <StyledTableCell align="left">{item?.doctor?.medicine}</StyledTableCell> */}
+                    <StyledTableCell align="left">
                       <Box
                         sx={{
                           display: "inline-block",
@@ -163,81 +184,52 @@ export default function Cart() {
                           border: "1px solid white",
                         }}
                       >
-
-                { item?.payment !== "paid"
-                     ? (
-                           <button
-                           onClick={() => {
-                             // setId(item._id)
-                             // if(id)
-                             // {
-                             //   checkout.show({ amount: item.invoice * 100})
-                             // }
-                             setId(item?._id);
-                             setSelectedInvoice(item?.doctor?.ammount);
-                           }}
-                           style={{
-                             backgroundColor: "transparent",
-                             border: "none",
-                             color: "inherit",
-                             cursor: "inherit",
-                             padding: 0,
-                           }}
-                         >
-                           Pay Via Khalti
-                         </button>
-                        )  :( <Typography>paid</Typography>)
-                          }
-                       
+                        {item?.payment !== "paid" ? (
+                          <button
+                            onClick={() => {
+                              // setId(item._id)
+                              // if(id)
+                              // {
+                              //   checkout.show({ amount: item.invoice * 100})
+                              // }
+                              setId(item?._id);
+                              setSelectedInvoice(item?.doctor?.ammount);
+                            }}
+                            style={{
+                              backgroundColor: "transparent",
+                              border: "none",
+                              color: "inherit",
+                              cursor: "inherit",
+                              padding: 0,
+                            }}
+                          >
+                            Pay Via Khalti
+                          </button>
+                        ) : (
+                          <Typography>paid</Typography>
+                        )}
                       </Box>
-                  
-                </StyledTableCell>
-                <StyledTableCell align="left">
-                  { item?.payment === "paid"
-                     ? (
-
-                      <Box
-                      sx={{
-                        display: "inline-block",
-                        backgroundColor: "purple",
-                        padding: "10px",
-                        color: "white",
-                        cursor: "pointer",
-                        fontWeight: "bold",
-                        border: "1px solid white",
-                      }}
-                    >
-                      <button
-
-                       onClickCapture={() => navigate(`/report/${item._id}`)
-                      }
-                        
-                        style={{
-                          backgroundColor: "transparent",
-                          border: "none",
-                          color: "inherit",
-                          cursor: "inherit",
-                          padding: 0,
-                        }}
-                      >
-                        Report
-                      </button>
-                    </Box>
-                      
-                    ) : (
-                      <Typography>pending....</Typography>
-                    )
-                   }
-                </StyledTableCell>
-              </StyledTableRow>
-            ))}
-          </TableBody>
-        </Table>
-      </TableContainer>
+                    </StyledTableCell>
+                    <StyledTableCell align="left">
+                      {item?.medicine?.length > 0 ? (
+                        <ul>
+                          {item.medicine.map((med, index) => (
+                            <li key={index}>{med}</li>
+                          ))}
+                        </ul>
+                      ) : (
+                        <Typography>No Medicines</Typography>
+                      )}
+                    </StyledTableCell>
+                    <StyledTableCell align="left">{item?.about || "No Details"}</StyledTableCell>
+                    
+                  </StyledTableRow>
+                ))}
+              </TableBody>
+            </Table>
+          </TableContainer>
+        </Grid>
       </Grid>
-       
-    </Grid>
-     
     </>
   );
 }

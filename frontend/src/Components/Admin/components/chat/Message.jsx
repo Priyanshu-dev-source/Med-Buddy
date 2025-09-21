@@ -10,7 +10,7 @@ const Message = () => {
         
         </div>
         <div className="messagecontent">
-            <p className='texts'>hello</p>
+            <p className='texts'>Hi</p>
         </div>
     </div>
   )

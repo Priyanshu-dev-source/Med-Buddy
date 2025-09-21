@@ -12,7 +12,7 @@ const signin = async (req, res) => {
            return  res.status(202).json({ message: "incomplete content" });
         } else {
             auth_user = await user.findOne({ username });
-            console.log(auth_user);
+            // console.log(auth_user);
             console.log("hey....")
             if (!auth_user) {
                   return  res
@@ -46,12 +46,12 @@ const signin = async (req, res) => {
 const doctorsignin = async (req, res) => {
   try {
       const { email, password } = req.body;
-      console.log(email,password)
+      // console.log(email,password)
       if (!email | !password) {
          return  res.status(202).json({ message: "incomplete content" });
       } else {
           auth_user = await doctor.findOne({ email });
-          console.log(auth_user);
+          // console.log(auth_user);
           if (!auth_user) {
                 return  res
                   .status(401)

@@ -58,7 +58,7 @@ const Footer = () => {
                                             color='primary'
                                             fontSize='large' />
                                     </Avatar>
-                                    Health Haven Hospital
+                                    Med Buddy
                                 </Typography>
                                 <Divider />
                             </Box>
@@ -69,7 +69,7 @@ const Footer = () => {
                                 spacing={1} >
                                 <Avatar sx={{ mt: 1, bgcolor: pink[500] }}>
                                     <LocationOnIcon />
-                                </Avatar><span>kathmandu ,Nepal</span>
+                                </Avatar><span>PSIT, Kanpur</span>
                             </Stack >
 
                             <Stack direction="row"
@@ -80,7 +80,7 @@ const Footer = () => {
                                     <EmailIcon />
                                 </Avatar>
                                 <a className='text-style' href="mailto:bastolaronak12@gmail.com">
-                                bastolaronak12@gmail.com
+                                medbuddypsit@gmail.com
                                 </a>
                             </Stack >
 
@@ -92,7 +92,7 @@ const Footer = () => {
                                     <CallIcon />
                                 </Avatar>
                                 <a className='text-style' href="tel:01680xxx86">
-                                +977-9862164447
+                                +91 6386835013
                                 </a>
                             </Stack >
 
@@ -166,7 +166,7 @@ const Footer = () => {
 
                     </Grid>
                     <Divider sx={{ mb: 2 }} />
-                    <Copyright sx={{ mt: 5 }} />
+                    {/* <Copyright sx={{ mt: 5 }} /> */}
 
                 </Container>
             </Box>

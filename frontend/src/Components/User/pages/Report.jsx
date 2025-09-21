@@ -7,12 +7,12 @@ import { useParams } from 'react-router-dom';
 import {
   Typography,
   Container,
-  Paper,
-  Avatar,
+  // Paper,
+  // Avatar,
   List,
   ListItem,
   ListItemText,
-  Grid,
+  // Grid,
 } from '@mui/material';
 
 const Report = () => {

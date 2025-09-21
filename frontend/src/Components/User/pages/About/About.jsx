@@ -89,7 +89,7 @@ const AboutUs = () => {
         About Us
       </SectionTypography>
       <SectionTypography variant="body1" paragraph>
-        Welcome to our hospital management system! We are dedicated to providing
+        Welcome to our Med Buddy! We are dedicated to providing
         exceptional healthcare services to our patients and streamlining
         administrative tasks for our staff.
       </SectionTypography>

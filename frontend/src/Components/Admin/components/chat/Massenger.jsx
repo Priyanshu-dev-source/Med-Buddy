@@ -6,7 +6,7 @@ const Massenger = () => {
   return (
     <div className="chat">
         <div className="chatinfo">
-            <span>Niroj</span>
+            <span>Priyanshu</span>
             
         </div>
         <Messages/>
